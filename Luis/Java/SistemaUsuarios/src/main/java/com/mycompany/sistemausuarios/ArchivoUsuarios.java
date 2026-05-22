@@ -8,7 +8,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class ArchivoUsuarios {
-
+    
     private static final String ARCHIVO = "usuarios.dat";
 
     // Guardar lista
