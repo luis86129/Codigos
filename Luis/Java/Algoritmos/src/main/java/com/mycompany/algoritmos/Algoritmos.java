@@ -17,15 +17,29 @@ public class Algoritmos {
 
             // Punto medio
             int medio = (izquierda + derecha) / 2;
+            
+            System.out.println("\nmedio: " + medio);
 
             // Ordenar mitad izquierda
             mergeSort(arreglo, izquierda, medio);
-
+            System.out.print("\nOrdenamiento en izquierda ");
+            for (int num : arreglo) {
+                System.out.print(num + " ");
+            }
+            
             // Ordenar mitad derecha
             mergeSort(arreglo, medio + 1, derecha);
-
+            System.out.print("\nOrdenamiento en derecha ");
+            for (int num : arreglo) {
+                System.out.print(num + " ");
+            }
+            
             // Combinar ambas mitades
             merge(arreglo, izquierda, medio, derecha);
+            System.out.print("\nCombinacion de ambas mitades ");
+            for (int num : arreglo) {
+                System.out.print(num + " ");
+            }
         }
     }
     
@@ -97,7 +111,7 @@ public class Algoritmos {
         // Llamada al Merge Sort
         mergeSort(numeros, 0, numeros.length - 1);
 
-        System.out.println("\n\nArreglo ordenado:");
+        System.out.println("\n\nArreglo ordenado por merge sort:");
 
         for (int num : numeros) {
             System.out.print(num + " ");
