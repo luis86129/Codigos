@@ -10,6 +10,46 @@ package com.mycompany.algoritmos;
  */
 public class Algoritmos {
     
+    public static void insertionSort(int[] arreglo) {
+        for (int i = 1; i < arreglo.length; i++) {
+            int key = arreglo[i];
+            int j = i - 1;
+
+            // Mover los elementos mayores que key a una posición adelante
+            while (j >= 0 && arreglo[j] > key) {
+                arreglo[j + 1] = arreglo[j];
+                j--;
+                System.out.println("\n\nArreglo SIENDO ordenado POR insertion sort:");
+                for (int num : arreglo) {
+                    System.out.print(num + " ");
+                }
+            }
+            
+            arreglo[j + 1] = key;
+            System.out.println("\n\nArreglo SIENDO ordenado POR insertion sort:");
+            for (int num : arreglo) {
+                System.out.print(num + " ");
+            }
+        }
+    }
+    
+    public static void bubbleSort(int[] arreglo) {
+        for (int i = 0; i < arreglo.length - 1; i++) {
+
+            for (int j = 0; j < arreglo.length - 1 - i; j++) {
+
+                // Comparar elementos adyacentes
+                if (arreglo[j] > arreglo[j + 1]) {
+
+                    // Intercambiar valores
+                    int temp = arreglo[j];
+                    arreglo[j] = arreglo[j + 1];
+                    arreglo[j + 1] = temp;
+                }
+            }
+        }
+    }
+    
     // Método principal de Merge Sort
     public static void mergeSort(int[] arreglo, int izquierda, int derecha) {
 
@@ -109,9 +149,24 @@ public class Algoritmos {
         }
 
         // Llamada al Merge Sort
-        mergeSort(numeros, 0, numeros.length - 1);
+        //mergeSort(numeros, 0, numeros.length - 1);
 
-        System.out.println("\n\nArreglo ordenado por merge sort:");
+        //System.out.println("\n\nArreglo ordenado por merge sort:");
+
+        /*for (int num : numeros) {
+            System.out.print(num + " ");
+        }*/
+        
+        /*insertionSort(numeros); // Llamada al método
+        System.out.println("\n\nArreglo ordenado POR insertion sort:");
+        for (int num : numeros) {
+            System.out.print(num + " ");
+        }*/
+        
+        
+        bubbleSort(numeros);
+
+        System.out.println("\n\nArreglo ordenado POR BUBBLE SORT:");
 
         for (int num : numeros) {
             System.out.print(num + " ");
