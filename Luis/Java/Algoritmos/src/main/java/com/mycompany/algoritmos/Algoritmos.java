@@ -157,19 +157,19 @@ public class Algoritmos {
             System.out.print(num + " ");
         }*/
         
-        /*insertionSort(numeros); // Llamada al método
+        insertionSort(numeros); // Llamada al método
         System.out.println("\n\nArreglo ordenado POR insertion sort:");
         for (int num : numeros) {
             System.out.print(num + " ");
-        }*/
+        }
         
         
-        bubbleSort(numeros);
+        /*bubbleSort(numeros);
 
         System.out.println("\n\nArreglo ordenado POR BUBBLE SORT:");
 
         for (int num : numeros) {
             System.out.print(num + " ");
-        }
+        }*/
     }
 }
