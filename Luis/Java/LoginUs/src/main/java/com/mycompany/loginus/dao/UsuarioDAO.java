@@ -2,7 +2,8 @@ package com.mycompany.loginus.dao;
 
 import com.mycompany.loginus.conexion.ConexionSQLite;
 import com.mycompany.loginus.modelo.Usuario;
-
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
@@ -90,6 +91,73 @@ public class UsuarioDAO {
             return false;
 
         }
+
+    }
+    
+    public ArrayList<Usuario> listar() {
+
+        ArrayList<Usuario> lista =
+                new ArrayList<>();
+
+        String sql = """
+                SELECT *
+                FROM usuarios
+                """;
+
+        try {
+
+            Connection con =
+                    ConexionSQLite.conectar();
+
+            PreparedStatement ps =
+                    con.prepareStatement(sql);
+
+            ResultSet rs =
+                    ps.executeQuery();
+
+            while(rs.next()) {
+
+                Usuario u = new Usuario();
+
+                u.setId(
+                        rs.getInt("id")
+                );
+
+                u.setNombre(
+                        rs.getString("nombre")
+                );
+
+                u.setApellido(
+                        rs.getString("apellido")
+                );
+
+                u.setUsuario(
+                        rs.getString("usuario")
+                );
+
+                u.setCorreo(
+                        rs.getString("correo")
+                );
+
+                u.setContraseña(
+                        rs.getString("contraseña")
+                );
+
+                lista.add(u);
+
+            }
+
+            rs.close();
+            ps.close();
+            con.close();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+        return lista;
 
     }
 

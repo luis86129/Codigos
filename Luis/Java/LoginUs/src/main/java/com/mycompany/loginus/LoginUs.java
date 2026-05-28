@@ -3,9 +3,12 @@
  */
 
 package com.mycompany.loginus;
+
 import com.mycompany.loginus.conexion.*;
 import com.mycompany.loginus.dao.*;
 import com.mycompany.loginus.modelo.*;
+import java.util.ArrayList;
+
 /**
  *
  * @author Luis Mendoza
@@ -16,19 +19,20 @@ public class LoginUs {
                 
         UsuarioDAO dao = new UsuarioDAO();
 
-        boolean login =
-                dao.login(
-                        "luis123",
-                        "1234"
-                );
+        ArrayList<Usuario> lista =
+                dao.listar();
 
-        if(login) {
+        for(Usuario u : lista) {
 
-            System.out.println("LOGIN CORRECTO");
-
-        } else {
-
-            System.out.println("USUARIO O CONTRASEÑA INCORRECTOS");
+            System.out.println(
+                    u.getId()
+                    + " - "
+                    + u.getNombre()
+                    + " - "
+                    + u.getApellido()
+                    + " - "
+                    + u.getUsuario()
+            );
 
         }
         
