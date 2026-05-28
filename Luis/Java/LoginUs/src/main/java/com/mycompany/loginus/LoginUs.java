@@ -16,24 +16,21 @@ public class LoginUs {
                 
         UsuarioDAO dao = new UsuarioDAO();
 
-        Usuario u = new Usuario(
-                "Ricardo",
-                "Fiallos",
-                "rickfiall",
-                "Ricardo@gmail.com",
-                "1723"
-        );
+        boolean login =
+                dao.login(
+                        "luis123",
+                        "1234"
+                );
 
-        boolean resultado = dao.insertar(u);
+        if(login) {
 
-        if(resultado) {
-
-            System.out.println("Usuario registrado");
+            System.out.println("LOGIN CORRECTO");
 
         } else {
 
-            System.out.println("Error");
+            System.out.println("USUARIO O CONTRASEÑA INCORRECTOS");
 
         }
+        
     }
 }

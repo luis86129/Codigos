@@ -52,5 +52,45 @@ public class UsuarioDAO {
         }
 
     }
+    
+    public boolean login(String usuario, String contraseña) {
+
+        String sql = """
+                SELECT *
+                FROM usuarios
+                WHERE usuario = ?
+                AND contraseña = ?
+                """;
+
+        try {
+
+            Connection con =
+                    ConexionSQLite.conectar();
+
+            PreparedStatement ps =
+                    con.prepareStatement(sql);
+
+            ps.setString(1, usuario);
+            ps.setString(2, contraseña);
+
+            var rs = ps.executeQuery();
+
+            boolean existe = rs.next();
+
+            rs.close();
+            ps.close();
+            con.close();
+
+            return existe;
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+            return false;
+
+        }
+
+    }
 
 }
