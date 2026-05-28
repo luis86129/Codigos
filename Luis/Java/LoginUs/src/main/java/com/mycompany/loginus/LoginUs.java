@@ -20,10 +20,10 @@ public class LoginUs {
         /*UsuarioDAO dao = new UsuarioDAO();
 
             Usuario u = new Usuario(
-                    "Luis",
+                    "Andres",
                     "Mendoza",
-                    "luis86129",
-                    "luismendoza86129@gmail.com",
+                    "Andres8612",
+                    "Andres8612@gmail.com",
                     "8612"
             );
 
@@ -89,6 +89,40 @@ public class LoginUs {
 
                 System.out.println(
                         "USUARIO ELIMINADO"
+                );
+
+            } else {
+
+                System.out.println(
+                        "NO EXISTE EL ID"
+                );
+
+        }*/
+        
+        // actualizar usuario
+        /*UsuarioDAO dao = new UsuarioDAO();
+
+            Usuario u = new Usuario();
+
+            u.setId(3);
+
+            u.setNombre("Carlos");
+
+            u.setApellido("Lopez");
+
+            u.setUsuario("carlos123");
+
+            u.setCorreo("carlos@gmail.com");
+
+            u.setContraseña("9999");
+
+            boolean actualizado =
+                    dao.actualizar(u);
+
+            if(actualizado) {
+
+                System.out.println(
+                        "USUARIO ACTUALIZADO"
                 );
 
             } else {

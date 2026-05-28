@@ -195,5 +195,49 @@ public class UsuarioDAO {
         }
 
     }
+    public boolean actualizar(Usuario u) {
+        String sql = """
+                UPDATE usuarios
+                SET
+                    nombre = ?,
+                    apellido = ?,
+                    usuario = ?,
+                    correo = ?,
+                    contraseña = ?
+                WHERE id = ?
+                """;
 
+        try {
+
+            Connection con =
+                    ConexionSQLite.conectar();
+
+            PreparedStatement ps =
+                    con.prepareStatement(sql);
+
+            ps.setString(1, u.getNombre());
+            ps.setString(2, u.getApellido());
+            ps.setString(3, u.getUsuario());
+            ps.setString(4, u.getCorreo());
+            ps.setString(5, u.getContraseña());
+
+            ps.setInt(6, u.getId());
+
+            int filas =
+                    ps.executeUpdate();
+
+            ps.close();
+            con.close();
+
+            return filas > 0;
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+            return false;
+
+        }
+
+    }
 }
