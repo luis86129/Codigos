@@ -4,6 +4,7 @@
 
 package com.mycompany.loginus;
 
+import com.mycompany.loginus.vistas.Inicio;
 import com.mycompany.loginus.conexion.*;
 import com.mycompany.loginus.dao.*;
 import com.mycompany.loginus.modelo.*;
@@ -16,6 +17,9 @@ import java.util.ArrayList;
 public class LoginUs {
 
     public static void main(String[] args) {
+        //iniciar pantalla
+        Inicio i = new Inicio();
+        i.setVisible(true);
         // crear usuario
         /*UsuarioDAO dao = new UsuarioDAO();
 
