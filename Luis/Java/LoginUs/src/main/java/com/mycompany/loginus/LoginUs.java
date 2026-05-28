@@ -13,16 +13,15 @@ import com.mycompany.loginus.modelo.*;
 public class LoginUs {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
-        ConexionSQLite.conectar();
+                
         UsuarioDAO dao = new UsuarioDAO();
 
         Usuario u = new Usuario(
-                "Luis",
-                "Mendoza",
-                "luis123",
-                "luis@gmail.com",
-                "1234"
+                "Ricardo",
+                "Fiallos",
+                "rickfiall",
+                "Ricardo@gmail.com",
+                "1723"
         );
 
         boolean resultado = dao.insertar(u);
