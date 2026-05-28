@@ -160,5 +160,40 @@ public class UsuarioDAO {
         return lista;
 
     }
+    
+    public boolean eliminar(int id) {
+
+        String sql = """
+                DELETE FROM usuarios
+                WHERE id = ?
+                """;
+
+        try {
+
+            Connection con =
+                    ConexionSQLite.conectar();
+
+            PreparedStatement ps =
+                    con.prepareStatement(sql);
+
+            ps.setInt(1, id);
+
+            int filas =
+                    ps.executeUpdate();
+
+            ps.close();
+            con.close();
+
+            return filas > 0;
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+            return false;
+
+        }
+
+    }
 
 }

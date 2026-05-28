@@ -16,7 +16,50 @@ import java.util.ArrayList;
 public class LoginUs {
 
     public static void main(String[] args) {
-                
+        // crear usuario
+        /*UsuarioDAO dao = new UsuarioDAO();
+
+            Usuario u = new Usuario(
+                    "Luis",
+                    "Mendoza",
+                    "luis86129",
+                    "luismendoza86129@gmail.com",
+                    "8612"
+            );
+
+            boolean resultado = dao.insertar(u);
+
+            if(resultado) {
+
+                System.out.println("Usuario registrado");
+
+            } else {
+
+                System.out.println("Error");
+
+        }*/
+        
+        // Ingresar con usuario y contraseña
+        /*UsuarioDAO dao = new UsuarioDAO();
+
+            boolean login =
+                    dao.login(
+                            "luis123",
+                            "1234"
+                    );
+
+            if(login) {
+
+                System.out.println("LOGIN CORRECTO");
+
+            } else {
+
+                System.out.println("USUARIO O CONTRASEÑA INCORRECTOS");
+
+        }*/
+
+
+        // listar usuarios
         UsuarioDAO dao = new UsuarioDAO();
 
         ArrayList<Usuario> lista =
@@ -35,6 +78,26 @@ public class LoginUs {
             );
 
         }
+        
+        // eliminar usuario
+        /*UsuarioDAO dao = new UsuarioDAO();
+
+            boolean eliminado =
+                    dao.eliminar(1);
+
+            if(eliminado) {
+
+                System.out.println(
+                        "USUARIO ELIMINADO"
+                );
+
+            } else {
+
+                System.out.println(
+                        "NO EXISTE EL ID"
+                );
+
+        }*/
         
     }
 }
