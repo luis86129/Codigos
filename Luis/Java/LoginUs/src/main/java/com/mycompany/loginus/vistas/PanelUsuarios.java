@@ -8,6 +8,14 @@ import com.mycompany.loginus.modelo.*;
 
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import java.io.FileOutputStream;
+
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author Luis Mendoza
@@ -85,6 +93,7 @@ public class PanelUsuarios extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JTextField();
         txtCorreo = new javax.swing.JTextField();
         txtContraseña = new javax.swing.JPasswordField();
+        btnExcel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -125,6 +134,9 @@ public class PanelUsuarios extends javax.swing.JFrame {
 
         jLabel6.setText("Contraseña:");
 
+        btnExcel.setText("Exportar Excel");
+        btnExcel.addActionListener(this::btnExcelActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -136,14 +148,15 @@ public class PanelUsuarios extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(btnEliminar))
+                .addGap(70, 70, 70)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(80, 80, 80)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtApellido)
                             .addComponent(txtUsuario)
@@ -152,11 +165,10 @@ public class PanelUsuarios extends javax.swing.JFrame {
                             .addComponent(txtContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(btnEliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnEditar)
-                        .addGap(113, 113, 113))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnExcel)
+                        .addGap(51, 51, 51))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(16, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -190,7 +202,8 @@ public class PanelUsuarios extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminar)
-                    .addComponent(btnEditar))
+                    .addComponent(btnEditar)
+                    .addComponent(btnExcel))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(24, Short.MAX_VALUE))
@@ -345,6 +358,104 @@ public class PanelUsuarios extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEditarActionPerformed
 
+    private void btnExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcelActionPerformed
+        try {
+
+            XSSFWorkbook libro =
+                    new XSSFWorkbook();
+
+            XSSFSheet hoja =
+                    libro.createSheet("Usuarios");
+
+            // CABECERAS
+            Row cabecera =
+                    hoja.createRow(0);
+
+            for(int i = 0;
+                i < tablaUsuarios.getColumnCount();
+                i++) {
+
+                cabecera.createCell(i)
+                        .setCellValue(
+                                tablaUsuarios
+                                .getColumnName(i)
+                        );
+
+            }
+
+            // DATOS
+            for(int i = 0;
+                i < tablaUsuarios.getRowCount();
+                i++) {
+
+                Row fila =
+                        hoja.createRow(i + 1);
+
+                for(int j = 0;
+                    j < tablaUsuarios.getColumnCount();
+                    j++) {
+
+                    Object valor =
+                            tablaUsuarios
+                            .getValueAt(i, j);
+
+                    fila.createCell(j)
+                            .setCellValue(
+                                    valor.toString()
+                            );
+
+                }
+
+            }
+
+            JFileChooser chooser =
+                    new JFileChooser();
+
+            chooser.setSelectedFile(
+                    new java.io.File(
+                            "usuarios.xlsx"
+                    )
+            );
+
+            int opcion =
+                    chooser.showSaveDialog(this);
+
+            if(opcion ==
+                    JFileChooser.APPROVE_OPTION) {
+
+                FileOutputStream archivo =
+                        new FileOutputStream(
+                                chooser
+                                .getSelectedFile()
+                        );
+
+                libro.write(archivo);
+
+                archivo.close();
+
+                libro.close();
+
+                javax.swing.JOptionPane
+                        .showMessageDialog(
+                                this,
+                                "EXCEL EXPORTADO"
+                        );
+
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+            javax.swing.JOptionPane
+                    .showMessageDialog(
+                            this,
+                            "ERROR AL EXPORTAR"
+                    );
+
+        }
+    }//GEN-LAST:event_btnExcelActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -373,6 +484,7 @@ public class PanelUsuarios extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnExcel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
