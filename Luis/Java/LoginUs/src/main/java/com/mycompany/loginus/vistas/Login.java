@@ -125,10 +125,12 @@ public class Login extends javax.swing.JFrame {
 
         if(login) {
 
-            JOptionPane.showMessageDialog(
-                    this,
-                    "LOGIN CORRECTO"
-            );
+            PanelUsuarios p =
+                    new PanelUsuarios();
+
+            p.setVisible(true);
+
+            dispose();
 
         } else {
 
