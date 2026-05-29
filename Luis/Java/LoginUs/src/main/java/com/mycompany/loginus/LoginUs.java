@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class LoginUs {
 
     public static void main(String[] args) {
+        
         //iniciar pantalla
         Inicio i = new Inicio();
         i.setVisible(true);

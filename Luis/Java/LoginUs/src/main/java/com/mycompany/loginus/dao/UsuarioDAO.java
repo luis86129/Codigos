@@ -18,7 +18,7 @@ public class UsuarioDAO {
                     apellido,
                     usuario,
                     correo,
-                    contraseña
+                    contrasena
                 )
                 VALUES (?, ?, ?, ?, ?)
                 """;
@@ -35,7 +35,7 @@ public class UsuarioDAO {
             ps.setString(2, u.getApellido());
             ps.setString(3, u.getUsuario());
             ps.setString(4, u.getCorreo());
-            ps.setString(5, u.getContraseña());
+            ps.setString(5, u.getContrasena());
 
             ps.executeUpdate();
 
@@ -60,7 +60,7 @@ public class UsuarioDAO {
                 SELECT *
                 FROM usuarios
                 WHERE usuario = ?
-                AND contraseña = ?
+                AND contrasena = ?
                 """;
 
         try {
@@ -139,8 +139,8 @@ public class UsuarioDAO {
                         rs.getString("correo")
                 );
 
-                u.setContraseña(
-                        rs.getString("contraseña")
+                u.setContrasena(
+                        rs.getString("contrasena")
                 );
 
                 lista.add(u);
@@ -203,7 +203,7 @@ public class UsuarioDAO {
                     apellido = ?,
                     usuario = ?,
                     correo = ?,
-                    contraseña = ?
+                    contrasena = ?
                 WHERE id = ?
                 """;
 
@@ -219,7 +219,7 @@ public class UsuarioDAO {
             ps.setString(2, u.getApellido());
             ps.setString(3, u.getUsuario());
             ps.setString(4, u.getCorreo());
-            ps.setString(5, u.getContraseña());
+            ps.setString(5, u.getContrasena());
 
             ps.setInt(6, u.getId());
 

@@ -67,7 +67,7 @@ public class ConexionSQLite {
 
                     correo TEXT UNIQUE NOT NULL,
 
-                    contraseña TEXT NOT NULL
+                    contrasena TEXT NOT NULL
 
                 )
                 """;

@@ -12,7 +12,7 @@ public class Usuario {
 
     private String correo;
 
-    private String contraseña;
+    private String contrasena;
 
     // CONSTRUCTOR VACIO
     public Usuario() {
@@ -24,14 +24,14 @@ public class Usuario {
             String apellido,
             String usuario,
             String correo,
-            String contraseña
+            String contrasena
     ) {
 
         this.nombre = nombre;
         this.apellido = apellido;
         this.usuario = usuario;
         this.correo = correo;
-        this.contraseña = contraseña;
+        this.contrasena = contrasena;
 
     }
 
@@ -76,12 +76,12 @@ public class Usuario {
         this.correo = correo;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contraseña) {
+        this.contrasena = contrasena;
     }
 
 }

@@ -327,7 +327,7 @@ public class PanelUsuarios extends javax.swing.JFrame {
                     txtCorreo.getText()
             );
 
-            u.setContraseña(
+            u.setContrasena(
                     String.valueOf(
                             txtContraseña.getPassword()
                     )
