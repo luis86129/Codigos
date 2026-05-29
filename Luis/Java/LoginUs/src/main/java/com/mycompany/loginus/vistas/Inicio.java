@@ -42,6 +42,7 @@ public class Inicio extends javax.swing.JFrame {
 
         btnIngresar.setFont(new java.awt.Font("Segoe UI Black", 3, 18)); // NOI18N
         btnIngresar.setText("Ingresar");
+        btnIngresar.addActionListener(this::btnIngresarActionPerformed);
 
         btnRegistrarse.setFont(new java.awt.Font("Segoe UI Black", 3, 18)); // NOI18N
         btnRegistrarse.setText("Registrarse");
@@ -85,6 +86,12 @@ public class Inicio extends javax.swing.JFrame {
 
         dispose();
     }//GEN-LAST:event_btnRegistrarseActionPerformed
+
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        Login l = new Login();
+        l.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnIngresarActionPerformed
 
     /**
      * @param args the command line arguments

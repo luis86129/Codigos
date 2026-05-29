@@ -64,7 +64,7 @@ public class LoginUs {
 
 
         // listar usuarios
-        UsuarioDAO dao = new UsuarioDAO();
+        /*UsuarioDAO dao = new UsuarioDAO();
 
         ArrayList<Usuario> lista =
                 dao.listar();
@@ -81,7 +81,7 @@ public class LoginUs {
                     + u.getUsuario()
             );
 
-        }
+        }*/
         
         // eliminar usuario
         /*UsuarioDAO dao = new UsuarioDAO();
