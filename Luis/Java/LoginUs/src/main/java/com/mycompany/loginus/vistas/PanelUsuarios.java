@@ -49,6 +49,7 @@ public class PanelUsuarios extends javax.swing.JFrame {
         modelo.addColumn("Apellido");
         modelo.addColumn("Usuario");
         modelo.addColumn("Correo");
+        modelo.addColumn("Contraseña");
 
         for(Usuario u : lista) {
 
@@ -58,7 +59,8 @@ public class PanelUsuarios extends javax.swing.JFrame {
                 u.getNombre(),
                 u.getApellido(),
                 u.getUsuario(),
-                u.getCorreo()
+                u.getCorreo(),
+                u.getContrasena()
 
             };
 
@@ -291,6 +293,10 @@ public class PanelUsuarios extends javax.swing.JFrame {
         txtCorreo.setText(
                 tablaUsuarios
                 .getValueAt(fila, 4)
+                .toString()
+        );  
+        txtContraseña.setText(
+                tablaUsuarios.getValueAt(fila, 5)
                 .toString()
         );
     }//GEN-LAST:event_tablaUsuariosMouseClicked

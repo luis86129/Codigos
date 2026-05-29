@@ -80,7 +80,7 @@ public class Usuario {
         return contrasena;
     }
 
-    public void setContrasena(String contraseña) {
+    public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
 

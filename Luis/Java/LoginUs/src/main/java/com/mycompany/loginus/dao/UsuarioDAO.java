@@ -222,7 +222,7 @@ public class UsuarioDAO {
             ps.setString(5, u.getContrasena());
 
             ps.setInt(6, u.getId());
-
+            System.out.println(u.getContrasena());
             int filas =
                     ps.executeUpdate();
 
